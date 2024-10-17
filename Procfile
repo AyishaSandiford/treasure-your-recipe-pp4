@@ -1,1 +1,1 @@
-web: gunicorn treasure_your_recipe.wsgi
+web: gunicorn my_project.wsgi
