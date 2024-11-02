@@ -2,17 +2,16 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Treasure your recipe</a>
+          <a class="navbar-brand" href="home_url">Treasure your recipe</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
               <a class="nav-link" href="#">CONTACT US</a>
-              <a class="nav-link" href="#">SIGN UP</a>
-              <a class="nav-link" href="#">LOGIN</a>
-              <a class="nav-link" href="#">HELP</a>
+              <a class="nav-link" href= "{% url 'account_signup' %}">SIGN UP</a>
+              <a class="nav-link" href="{% url 'account_login' %}">LOGIN</a>
             </div>
           </div>
         </div>
