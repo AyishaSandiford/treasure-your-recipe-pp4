@@ -1,17 +1,12 @@
 from django.shortcuts import render, HttpResponse
 from .models import Recipe
 from django.contrib.auth.decorators import login_required
+from . import forms
+from django.shortcuts import redirect
 
 # Create your views here.
 @login_required
-def get_dashboard_view(request):
-    # Filter the recipies and show only the ones for the currently logged in user
-    # Recipe.objects.filter(user=currently_logged_in_user)
-    # request.user.username
-    # return HttpResponse(Recipe.objects.all()[0].title)
-    # return HttpResponse(request.user.id)
-    # return data[0]
-    
+def get_dashboard_view(request): 
     currently_logged_in_user_id = request.user.id
     all_recipes = Recipe.objects.all()
     filtered_recipes = all_recipes.filter(user = currently_logged_in_user_id)
@@ -21,5 +16,15 @@ def get_dashboard_view(request):
 
     
 
-    # return HttpResponse("Nada")
+def Create(request):
+    if request.method == 'POST':
+        form = forms.RecipeForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.user_id = request.user.id
+            form.save()
+            return redirect(get_dashboard_view)
+    form = forms.RecipeForm()
+    form.as_table()
+    return render(request, 'recipe/dashboard/create.html', {'form': form})
    
