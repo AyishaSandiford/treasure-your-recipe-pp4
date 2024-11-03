@@ -1,8 +1,9 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404
 from .models import Recipe
 from django.contrib.auth.decorators import login_required
 from . import forms
 from django.shortcuts import redirect
+from django.contrib import messages
 
 # Create your views here.
 @login_required
@@ -24,7 +25,22 @@ def Create(request):
             obj.user_id = request.user.id
             form.save()
             return redirect(get_dashboard_view)
-    form = forms.RecipeForm()
-    form.as_table()
+    else:
+        form = forms.RecipeForm()
     return render(request, 'recipe/dashboard/create.html', {'form': form})
+
+
+@login_required
+def Edit(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id, user_id=request.user.id)
+    if request.method == 'POST':
+        form = forms.RecipeForm(request.POST, instance=recipe)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Recipe " + form.cleaned_data['title'] + " was updated successfully.")
+            return redirect(get_dashboard_view)
+    else:
+        form = forms.RecipeForm(instance=recipe)
+    
+    return render(request, 'recipe/dashboard/edit.html', {'form':form})
    
