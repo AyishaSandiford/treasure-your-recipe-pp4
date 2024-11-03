@@ -23,6 +23,9 @@
                 <th>ID</th>
                 <th>Title</th>
                 <th>Instructions</th>
+                <th>Delete</th>
+                <th>Action</th>
+
             </tr>
         </thead>
 
@@ -32,6 +35,10 @@
                 <td>{{ recipe.id }}</td>
                 <td>{{ recipe.title }}</td>
                 <td>{{ recipe.instructions | truncatechars:7 }}</td>
+                <td><a href= "/recipe/delete/{{ recipe.id }}">
+                <button>Delete</button></a></td>
+                <td><a href= "/recipe/show/{{ recipe.id }}">
+                    <button>View</button></a></td>
             </tr>
             {% endfor %}
         </tbody>

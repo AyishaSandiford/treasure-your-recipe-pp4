@@ -44,3 +44,15 @@ def Edit(request, recipe_id):
     
     return render(request, 'recipe/dashboard/edit.html', {'form':form})
    
+
+@login_required
+def Delete(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id, user_id=request.user.id)
+    recipe.delete()
+    messages.success(request, "Recipe " + recipe.title + " was deleted successfully.")
+    return redirect(get_dashboard_view)
+
+
+def Show(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id, user_id=request.user.id)
+    return render(request, 'recipe/dashboard/show.html', {'recipe':recipe})
