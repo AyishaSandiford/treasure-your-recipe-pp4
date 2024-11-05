@@ -1,0 +1,13 @@
+.errorlist {
+    list-style: none;
+    padding-left: 0;
+}
+
+.errorlist li {
+    padding: 4px 10px;
+    border: solid 1px #f1aeb5;
+    background-color: #f8d7da;
+    color: #58151c;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}

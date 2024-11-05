@@ -16,7 +16,7 @@ def get_dashboard_view(request):
     return render(request, "recipe/dashboard/dashboard.html", {"recipes": filtered_recipes.all() })
 
     
-
+@login_required
 def Create(request):
     if request.method == 'POST':
         form = forms.RecipeForm(request.POST)

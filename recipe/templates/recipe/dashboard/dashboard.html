@@ -1,16 +1,12 @@
-{% extends "base.html" %}
+{% extends "recipe/base.html" %}
 
 {% block content %}
 
-
 <h1>Welcome {{ request.user.username }} to your dashboard</h1>
-
-<a href= "{% url 'account_logout'  %}">Logout</a>
-
 
 
 <div class="container">
-    <h1> Your List of Recipe </h1>
+    <h1> Your Treasured Recipes </h1>
 
     {% if messages %}
         {% for message in messages %}
@@ -23,9 +19,6 @@
                 <th>ID</th>
                 <th>Title</th>
                 <th>Instructions</th>
-                <th>Delete</th>
-                <th>Action</th>
-
             </tr>
         </thead>
 
@@ -35,10 +28,13 @@
                 <td>{{ recipe.id }}</td>
                 <td>{{ recipe.title }}</td>
                 <td>{{ recipe.instructions | truncatechars:7 }}</td>
-                <td><a href= "/recipe/delete/{{ recipe.id }}">
-                <button>Delete</button></a></td>
-                <td><a href= "/recipe/show/{{ recipe.id }}">
-                    <button>View</button></a></td>
+                <td>
+                        <a href= "/recipe/show/{{ recipe.id }}">
+                        <button type="button" class="btn btn-primary">View</button></a>
+                        <a href= "/recipe/edit/{{ recipe.id }}">
+                            <button type="button" class="btn btn-primary">Edit</button></a>
+                        <button type="button" class="btn btn-danger" onClick="confirmDelete({{ recipe.id }})">Delete</button>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
