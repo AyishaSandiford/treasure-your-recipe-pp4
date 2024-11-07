@@ -24,6 +24,7 @@ def Create(request):
             obj = form.save(commit=False)
             obj.user_id = request.user.id
             form.save()
+            messages.success(request, "Recipe " + form.cleaned_data['title'] + " was created successfully.")
             return redirect(get_dashboard_view)
     else:
         form = forms.RecipeForm()
