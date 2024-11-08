@@ -1,44 +1,37 @@
 {% extends "recipe/base.html" %}
 
 {% block content %}
-
-<h1>Welcome {{ request.user.username }} to your dashboard</h1>
-
+<div class="container text-center welcome">
+    <h1>Welcome {{ request.user.username }} to your dashboard</h1>
+</div>
 
 <div class="container">
-    <h1> Your Treasured Recipes </h1>
+    <h3> Your Treasured Recipes </h3>
 
     {% if messages %}
         {% for message in messages %}
         <div class="alert alert-success" role="alert">{{ message }}</div>
         {% endfor %}
     {% endif %}
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Instructions</th>
-            </tr>
-        </thead>
 
-        <tbody>
-            {% for recipe in recipes %}
-            <tr>
-                <td>{{ recipe.id }}</td>
-                <td>{{ recipe.title }}</td>
-                <td>{{ recipe.instructions | truncatechars:7 }}</td>
-                <td>
-                        <a href= "/recipe/show/{{ recipe.id }}">
-                        <button type="button" class="btn btn-primary">View</button></a>
-                        <a href= "/recipe/edit/{{ recipe.id }}">
-                        <button type="button" class="btn btn-primary">Edit</button></a>
-                        <button type="button" class="btn btn-danger" onClick="confirmDelete({{ recipe.id }})">Delete</button>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="recipe-items">
+        {% for recipe in recipes %}
+        <div class="recipe-item">
+            <div class="title">{{ recipe.title }}</div>
+            <div class="instructions">
+                <div><strong>Instructions:</strong></div>
+                {{ recipe.instructions | truncatechars:50 }}
+            </div>
+            <div class="actions">
+                <a href= "/recipe/show/{{ recipe.id }}">
+                    <button type="button" class="btn btn-primary">View</button></a>
+                    <a href= "/recipe/edit/{{ recipe.id }}">
+                    <button type="button" class="btn btn-primary">Edit</button></a>
+                    <button type="button" class="btn btn-danger" onClick="confirmDelete({{ recipe.id }})">Delete</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
 
