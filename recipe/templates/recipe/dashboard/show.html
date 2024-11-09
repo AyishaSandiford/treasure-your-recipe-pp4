@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <h1>{{recipe.title}}</h1>
-    <p> <h5>Ingredients:</h5> {{ recipe.ingredients|linebreaks }}{{recipe.ingredients}}</p>
+    <p> <h5>Ingredients:</h5> {{ recipe.ingredients|linebreaks }}</p>
     <p> <h5>Instructions:</h5> {{ recipe.instructions|linebreaks }}</p>
 
     <a href= "/recipe/edit/{{ recipe.id }}">

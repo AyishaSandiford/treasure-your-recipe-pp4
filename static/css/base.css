@@ -1,3 +1,17 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    margin-bottom: 40px;
+}
+
+footer {
+    margin-top: auto;
+}
+
 .errorlist {
     list-style: none;
     padding-left: 0;
@@ -18,3 +32,58 @@
     max-width: 50%;
 }
 
+form.all-auth {
+   text-align: left;
+}
+
+form.all-auth label {
+    display: block;
+}
+
+form.all-auth input {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .375rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+form.all-auth ul {
+    padding-left: 0px;
+}
+
+form.all-auth ul li {
+    list-style: none;
+    border-bottom: solid 1px #EEE;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    margin-left: 0;
+    font-size: 0.8rem;
+}
+
+form.all-auth button.primaryAction, form.all-auth button.secondaryAction {
+    display: none;
+}
+
+form .buttonHolder {
+    display: flex;
+    gap: 5px;
+    margin: 5px 0;
+}
+
+.all-auth-messages {
+    padding: 20px;
+    border: solid 1px #EEE;
+    border-radius: 15px;
+    margin: 20px auto;
+}

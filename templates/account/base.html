@@ -1,9 +1,12 @@
+{% load static %}
 {% load i18n %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     <title>{% block head_title %}{% endblock head_title %}</title>
     {% block extra_head %}
     {% endblock extra_head %}
@@ -11,33 +14,60 @@
   <body>
     {% block body %}
 
-    {% if messages %}
-    <div>
-      <strong>{% trans "Messages:" %}</strong>
-      <ul>
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-      </ul>
+    <div class="container mb-5">
+      <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">Treasure Your Recipe</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                {% if user.is_authenticated %}
+                <a class="nav-link" href="{% url 'account_email' %}">{% trans "Change Email" %}</a>
+                <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
+                {% else %}
+                <a class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
+                <a class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
     </div>
-    {% endif %}
+    <main>
+      {% if messages %}
+      <div class="container all-auth-messages">
+        <strong>{% trans "Messages:" %}</strong>
+        <ul>
+          {% for message in messages %}
+          <li>{{message}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
 
-    <div>
-      <strong>{% trans "Menu:" %}</strong>
-      <ul>
-        {% if user.is_authenticated %}
-        <li><a href="{% url 'account_email' %}">{% trans "Change Email" %}</a></li>
-        <li><a href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a></li>
-        {% else %}
-        <li><a href="{% url 'account_login' %}">{% trans "Sign In" %}</a></li>
-        <li><a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></li>
-        {% endif %}
-      </ul>
-    </div>
-    {% block content %}
-    {% endblock content %}
-    {% endblock body %}
-    {% block extra_body %}
-    {% endblock extra_body %}
+      {% block content %}
+      {% endblock content %}
+      {% endblock body %}
+      {% block extra_body %}
+      {% endblock extra_body %}
+    </main>
+  
+    <footer class="container py-3 mb-2 border-top text-center">
+      <h4>Contact Us!</h4>
+      <div class="row">
+        <div class="col-md-4">treasureyourrecipe@gmail.com</div>
+        <div class="col-md-4">+1246-555-5555</div>
+        <div class="col-md-4">Sheraton, Christ Church Barbados</div>
+      </div>
+      <div class="text-muted text-center mt-4">&copy; 2024 Treasure your recipe.Inc</div>
+    </footer>
+
+    {% block onload_js%}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {% endblock %}
   </body>
 </html>

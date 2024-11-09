@@ -1,3 +1,17 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    margin-bottom: 40px;
+}
+
+footer {
+    margin-top: auto;
+}
+
 .errorlist {
     list-style: none;
     padding-left: 0;

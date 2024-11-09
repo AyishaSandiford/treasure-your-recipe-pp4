@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container text-center welcome">
-    <h1>Welcome Back</h1>
+    <h1>Dashboard</h1>
 </div>
 
 <div class="container">
@@ -14,6 +14,7 @@
         {% endfor %}
     {% endif %}
 
+    {% if recipes %}
     <div class="recipe-items">
         {% for recipe in recipes %}
         <div class="recipe-item">
@@ -32,6 +33,14 @@
         </div>
         {% endfor %}
     </div>
+    {% else %}
+
+    <p>You don''t have any recipies... </p>
+    <a href= "{% url 'create' %}">
+        <button type="button" class="btn btn-primary">Create New Recipe</button>
+    </a>
+
+    {% endif %}
 </div>
 
 
