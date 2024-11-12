@@ -5,6 +5,20 @@ from . import forms
 from django.shortcuts import redirect
 from django.contrib import messages
 
+"""
+    Returns the Authorize user's list of recipes.
+
+    This view returns the dashboard template to the user
+    displaying all of the user's created recipes
+
+    Parameters:
+    object that represents the client's request.
+
+    Returns:
+    HttpResponse: 
+    
+    """
+
 # Create your views here.
 @login_required
 def get_dashboard_view(request): 

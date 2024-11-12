@@ -1,6 +1,25 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
+"""
+    Represents a Recipe in Treasure Your Recipe.
+
+    This model is designed to store and manage
+    information regarding your recipes.
+
+    Attributes:
+    - user (ForeignKey): ID of the user interacting with the database/recipe
+    - title (CharField): The name given to the Recipe.
+    - ingredients (TextField): A list of all indregients needed to 
+    create the dish.
+    - instructions (TextField): A Step by Step guide on how to 
+    create the recipe.
+    - created_at (DateTimeField): Indicates when the recipe was created
+    - updated_at (DateTimeField): Indicates when the recipe was last
+    updated
+
+    """
 # Create your models here.
 class Recipe(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipe_owner")

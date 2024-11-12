@@ -17,10 +17,20 @@ This project was created due to my love for cooking. My family has hundreds for 
 > [Link here to user Stories on github]()
 
 ## Features
-- Login 
-![Login Image]()
-- Sign up
-![Signup Image]()
+<details>
+<summary>Screenshot of The Login Form</summary>
+
+![Screenshot of The Login Form]()
+
+</details>
+<br>
+<details>
+<summary>Screenshot of The Signup Form</summary>
+
+![Screenshot of The Register Form]()
+
+</details>
+
 
 ## Future Features
 - The ability to add an image of the final dish to your createde recipe
