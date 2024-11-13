@@ -70,6 +70,10 @@ nav {
     margin-top: 20px;
 }
 
+.recipe-btn {
+    margin-bottom: 10px;
+}
+
 @media (max-width: 767px) {
     .recipe-item {
         width: 100%;

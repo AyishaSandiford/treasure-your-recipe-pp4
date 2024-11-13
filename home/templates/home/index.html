@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="px-4 text-center">
-    <img class="d-block mx-auto mb-4 img" src="{% static 'images/front-page1.webp' %}" alt="Hands cutting carrots on a cuttingboard">
+    <img class="d-block mx-auto mb-4 img" src="https://res.cloudinary.com/deqlxqfzr/image/upload/v1731457313/frontpageimage_nrvnh7_nedndy.png" alt="Hands cutting carrots on a cuttingboard">
     <h1 class="display-5 fw-bold">Welcome to Treasure Your Recipe</h1>
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">The app that lets you cherish and manage the recipes 
@@ -16,9 +16,7 @@
         this app helps ensure your most treasured recipes are always within reach.</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
         {% if request.user.is_authenticated %}
-        <a href= "{% url 'create' %}">
-          <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Create New Recipe</button>
-        </a>
+        <a href= "{% url 'create' %}" class="btn btn-success btn-lg px-4 gap-3">Create New Recipe</a>
         {% else %}
         <a href= "{% url 'account_signup' %}">
           <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Sign Up</button>

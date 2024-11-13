@@ -7,7 +7,10 @@
 
 <div class="container">
     <h3> Your Treasured Recipes </h3>
-
+    <div class="d-flex justify-content-end">
+        <a href= "{% url 'create' %}" class="btn btn-success mb-3">Create New Recipe</a>
+    </div>
+    </a>
     {% if messages %}
         {% for message in messages %}
         <div class="alert alert-success" role="alert">{{ message }}</div>
@@ -24,10 +27,8 @@
                 {{ recipe.instructions | truncatechars:50 }}
             </div>
             <div class="actions">
-                <a href= "/recipe/show/{{ recipe.id }}">
-                    <button type="button" class="btn btn-primary">View</button></a>
-                    <a href= "/recipe/edit/{{ recipe.id }}">
-                    <button type="button" class="btn btn-primary">Edit</button></a>
+                <a href= "/recipe/show/{{ recipe.id }}" class="btn btn-primary">View</a>
+                    <a href= "/recipe/edit/{{ recipe.id }}" class="btn btn-secondary">Edit</a>
                     <button type="button" class="btn btn-danger" onClick="confirmDelete({{ recipe.id }})">Delete</button>
             </div>
         </div>

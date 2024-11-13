@@ -2,10 +2,11 @@ from django import forms
 from .models import Recipe
 from django.core.exceptions import ValidationError
 
+
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
-        fields = ['title','ingredients', 'instructions']
+        fields = ['title', 'ingredients', 'instructions']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

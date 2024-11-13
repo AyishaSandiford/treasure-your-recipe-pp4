@@ -6,11 +6,9 @@
     <p> <h5>Ingredients:</h5> {{ recipe.ingredients|linebreaks }}</p>
     <p> <h5>Instructions:</h5> {{ recipe.instructions|linebreaks }}</p>
 
-    <a href= "/recipe/edit/{{ recipe.id }}">
-         <button type="button" class="btn btn-primary">Edit</button></a>
-
-        <button type="button" class="btn btn-danger" onClick="confirmDelete({{ recipe.id }})">Delete</button>
-
+    <a href= "/recipe/edit/{{ recipe.id }}" class="btn btn-secondary">Edit</a>
+    
+    <button  class="ml-2 btn btn-danger" onClick="confirmDelete({{ recipe.id }})">Delete</button>
 </div>
 
 {%endblock%}
